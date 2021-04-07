@@ -10,6 +10,7 @@
      state:{
          stepCounter:1,
          parents: [],
+         enfants: [],
          stepInfo:1,
          TotalSteps:3,
          confirmed:false
@@ -28,24 +29,53 @@
                 //state.vlidatedStep = false;
           }
          },
-         previousStep(state){
-             state.stepCounter--;
-         },
+         prevStep(state) {
+            if( state.stepCounter - 1 > 0 ){
+                  state.stepCounter--;
+                  state.vlidatedStep = true;
+            }
+          },
          deleteLastParent(state) {
             state.parents.pop();
           },
           setConfirmed(state, status) {
             state.confirmed = status;
-    },
-       
+            },
+        resetChildren(state) {
+            state.childrens = [];
+          },
+          
+          addChild(state, enfant) {
+            if(state.enfants.length < 6)
+              state.enfants.push(enfant);
+          },
+          
+          deleteChild(state, child) {
+              let index = state.enfants.indexOf(child);
+              state.enfants.splice(index, 1);
+          },
+          deleteLastChild(state) {
+            state.enfants.pop();
+          },
  
      },
      getters:{
-        getParents(state) {
-            return state.parents;
+        getCurrentStep(state) {
+            return state.CurrentStep;
           },
         getConfirmed(state) {
             return state.confirmed;
+          },
+          getVlidatedStep(state) {
+            return state.vlidatedStep;
+          },
+          
+          getParents(state) {
+            return state.parents;
+          },
+      
+          getChildrens(state) {
+            return state.enfants;
           },
      }
     

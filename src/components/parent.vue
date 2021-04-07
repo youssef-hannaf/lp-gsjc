@@ -142,7 +142,7 @@ export default {
     }
   ,
    methods:{
-            ...mapMutations(["nextStep","previousStep","addParent","setConfirmed","deleteLastParent"]),
+            ...mapMutations(["nextStep","addParent","setConfirmed","deleteLastParent"]),
 
           addNewParent(){
           this.addParent({...this.parent});

@@ -36,7 +36,7 @@
                  
                   
                   <div class="mb-4">
-                     <b-button @click="previousStep" pill variant="primary" class="precedent">précédent</b-button>
+                     <b-button @click="prevStep" pill variant="primary" class="precedent">précédent</b-button>
                       <b-button  pill variant="primary" class="suivant">Envoyer</b-button>
                    </div>
                </form>
@@ -57,7 +57,7 @@ import {mapMutations} from "vuex";
 export default {
   name: 'validation',
    methods:{
-            ...mapMutations(["nextStep","previousStep"]),
+            ...mapMutations(["nextStep","prevStep"]),
            
         }
 }
