@@ -251,3 +251,34 @@ select{
     margin-bottom: 20px;
     outline: none;
 }
+.button-delete{
+    padding: 0!important;
+    background: transparent;
+    color: $secondColor;
+    font-size: 18px;
+    position: absolute;
+    padding: 0;
+    top: 107px;
+    right: 118px;
+    height: auto;
+    cursor: pointer;
+    opacity: 0.8;
+    z-index: 2;
+    &:hover,
+    &:focus{
+        background: transparent;
+        opacity: 1;
+        color: $secondColor;
+        box-shadow: none;
+    }
+
+}
+.civilite-group{
+    text-align: center;
+    margin: 20px 0;
+    & > div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

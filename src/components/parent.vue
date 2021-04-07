@@ -21,11 +21,13 @@
               <parentInfo v-for="(item, index) in getParents" :key="index" :parent="item"/>
               <div id="main_container">
                 <div class="d-flex justify-content-center align-items-center">
-                  <div class="p-2 civilite"><label>Civilité</label></div>
-                  <div class="p-2"><input id="radio1" type="radio" value="m" v-model="parent.civilite"></div>
-                  <div class="p-2"><label for="radio1">M.</label></div>
-                  <div class="p-2"><input id="radio2" type="radio" value="mme" v-model="parent.civilite"></div>
-                  <div class="p-2"><label for="radio2">Mme.</label></div>
+                  <b-form-group class="civilite-group">
+                    <div class="p-2 civilite"><label>Civilité</label></div>
+                    <div class="p-2"><b-form-radio class="ml-5" id="radio1" type="is-info" value="m" v-model="parent.civilite"></b-form-radio></div>
+                     <div class="p-2"><label for="radio1">M.</label></div>
+                    <div class="p-2"><b-form-radio class="ml-5" type="is-info" id="radio2" value="mme" v-model="parent.civilite"></b-form-radio></div>
+                    <div class="p-2"><label for="radio2">Mme.</label></div>
+                  </b-form-group>
                 </div>
                
                   <div class="row">

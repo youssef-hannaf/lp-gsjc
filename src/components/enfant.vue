@@ -122,7 +122,7 @@ export default {
      mounted(){
         if(this.getChildrens.length > 0){
             this.enfant = { ...this.getChildrens.slice(-1).pop() };
-            this.deleteLastChild();
+            //this.deleteLastChild();
         }
     },
    methods: {

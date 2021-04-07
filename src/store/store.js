@@ -23,6 +23,10 @@
                 console.log(data);
                 state.parents.push(data);
           },
+          deleteParent(state, parent) {
+            let index = state.parents.indexOf(parent);
+            state.parents.splice(index, 1);
+          },
          nextStep(state){
             if( 1 + state.stepCounter <= state.TotalSteps ){
                 state.stepCounter++;
