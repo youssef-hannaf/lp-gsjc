@@ -14,14 +14,24 @@
           <div class="col-sm-8">
               <div id="main_right">
                    <div id="main_container" class="validation">
-               <form action="">
+                     <formHeader
+                    title="Type d'action"
+                    subtitle="Renseignez ce formulaire afin que notre département des admissions prenne contact avec vous dans les plus brefs délais"
+                    />
                   <div class="row">
                       <div class="col-sm-12">
-                        <select name="" id="">
-                            <option value="opt1">Vous préférez étre contacté</option>
-                            <option value="opt2">Par mail</option>
-                            <option value="opt3">Par téléphone</option>
-                        </select>
+                        <b-form-group class="action-type-group">
+                          <br>
+                            <select :expanded="true" v-model="selected" class="aw-select" placeholder="Vous préférez etre contacté">
+                                    <option
+                                        v-for="(option, index) in options"
+                                        :value="option.value"
+                                        :key="index">
+                                        {{ option.text }}
+                                    </option>
+                                </select>
+                          </b-form-group>
+
                       </div>
                   </div>
                   <div class="admission">
@@ -37,27 +47,84 @@
                   
                   <div class="mb-4">
                      <b-button @click="prevStep" pill variant="primary" class="precedent">précédent</b-button>
-                      <b-button  pill variant="primary" class="suivant">Envoyer</b-button>
+                      <b-button  pill variant="primary" class="suivant" :disabled="!Validated" v-on:click="nextStep" v-b-modal.modal-1>Envoyer</b-button>
                    </div>
-               </form>
+              
               </div>
               </div>
              
             </div>
           </div>
         </div>
-      </div>
-   
 
-    
+        <!-- <b-modal id="modal-1" title="BootstrapVue">
+          <p class="my-4">Hello from modal!</p>
+        </b-modal>-->
+
+        <b-modal
+            v-model="isComponentModalActive"
+            has-modal-card
+            trap-focus
+            :destroy-on-hide="false"
+            aria-role="dialog"
+            aria-label="Example Modal"
+            aria-modal>
+            <template #default="props">
+                <confirm @close="props.close"></confirm>
+            </template>
+        </b-modal>
+      </div>
 </template>
 
 <script>
-import {mapMutations} from "vuex";
+import {mapMutations} from "vuex"
+import formHeader from "./formHeader"
+import confirm from "./confirm.vue"
 export default {
   name: 'validation',
+  components:{
+    formHeader,
+    confirm
+  },
+   data(){
+        return{
+            selected: '',
+            isComponentModalActive: false,
+            options: [
+                {value: '', text: 'Vous préférez étre contacté'},
+                {value: 'A', text: 'Par Mail'},
+                {value: 'B', text: 'Par Téléphone'}
+            ]
+        }
+    },
+     computed: {
+        Validated: function(){
+            let errors = this.validate();
+            return Object.keys(errors).length === 0;
+        },
+    },
    methods:{
-            ...mapMutations(["nextStep","prevStep"]),
+            ...mapMutations(["nextStep","prevStep","setTypeAction"]),
+            validate(){
+
+            let errors = {};
+
+            if(!this.selected){
+                errors['tpyeAction'] = 'Type d\'action est obligatoire';
+            }
+            
+
+            return errors;
+
+        },
+        nextStep(){
+            const errors = this.validate();
+            if(Object.keys(errors).length == 0){
+                this.isComponentModalActive = true;
+                this.setTypeAction(this.selected);
+            }
+
+        },
            
         }
 }

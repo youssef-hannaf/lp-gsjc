@@ -13,7 +13,8 @@
          enfants: [],
          stepInfo:1,
          TotalSteps:3,
-         confirmed:false
+         confirmed:false,
+         typeAction: null,
      },
     
      mutations:{
@@ -61,6 +62,9 @@
           deleteLastChild(state) {
             state.enfants.pop();
           },
+          setTypeAction(state, type) {
+            state.typeAction = type;
+    }
  
      },
      getters:{
