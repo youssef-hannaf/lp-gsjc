@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="parent_info">
-            <b-button class="button-delete" v-on:click="deleteParent(parent)" type="is-primary"><font-awesome-icon :icon="['fas', 'user-times']"/></b-button>
+            <b-button class="button-delete" v-on:click="deleteParent(parent)" type="is-primary"><font-awesome-icon :icon="['fas', 'times']"/></b-button>
             <div class="row">
                     <div class="col-md-5"><div class="parent_name">{{parent.civilite}}.{{parent.nom + ' ' + parent.prenom}}</div></div>      
                     <div class="col-md-7"><div class="parent_tel">Tel:{{parent.telephone}}</div></div>

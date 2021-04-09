@@ -15,7 +15,7 @@
             <div id="main_right">
               <div id="main_right_header">
                  <formHeader
-                    title="Coordinnées des parents"
+                    title="Coordonnées des parents"
                     subtitle="Renseignez ce formulaire afin que notre département des admissions prenne contact avec vous dans les plus brefs délais"
                  />
               <parentInfo v-for="(item, index) in getParents" :key="index" :parent="item"/>
@@ -46,10 +46,10 @@
                   <div class="row">
                       <div class="col-sm-6">
                         <b-form-group>
-                          <b-select :expanded="true" v-model="parent.pays" class="custom-select-parent" placeholder="Votre Pays*">
-                            <option v-for="country in countries" 
+                          <b-select :expanded="true" v-model="parent.pays"  class="select-country aw-select" placeholder="Votre Pays">
+                            <option v-for="(country, index) in countries" 
                                           :value="country.code"
-                                          :key="country.code"
+                                          :key="index"
                             >
                                 {{country.name}}
                             </option>
@@ -57,35 +57,49 @@
                         </b-form-group>
                       </div>
                       <div class="col-sm-6">
-                         <input id="ville" type="text" placeholder="Ville*" v-model="parent.ville">
+                        <b-form-group>
+                           <b-input id="ville" type="text" placeholder="Ville*" v-model="parent.ville"></b-input>
+                        </b-form-group>
                       </div>
                   </div>
                   <div class="row">
                       <div class="col-sm-6">
-                        <input id="telephone" type="text" placeholder="+212      Téléphone*" v-model="parent.telephone">
+                        <b-form-group>
+                            <b-input id="telephone" type="text" placeholder="+212      Téléphone*" v-model="parent.telephone"></b-input>
+                        </b-form-group>
                       </div>
                       <div class="col-sm-6">
-                         <input id="email" type="text" placeholder="Email*" v-model="parent.email">
+                          <b-form-group>
+                            <b-input id="email" type="text" placeholder="Email*" v-model="parent.email"></b-input>
+                         </b-form-group>
                       </div>
                   </div>
                   <div class="row">
                       <div class="col-sm-12">
-                        <input id="profession" type="text" placeholder="Votre profession" v-model="parent.profession">
+                        <b-form-group>
+                            <b-input id="profession" type="text" placeholder="Votre profession" v-model="parent.profession"></b-input>
+                        </b-form-group>
                       </div>
                   </div>
                   <div class="mb-4">
                     <button  class="btn-add-parent" v-if="IsAllowToAddParent" :disabled="!Validated" @click="addNewParent">Ajouter un parent / tuteur</button>
                   </div>
-                 <div class="mb-4">
-                   <div id="loi">
-                     <input id="radio3" type="radio" v-model="confirmed">    
-                   <label for="radio3">Conformément à la loi 09-08, vous disposez d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles. Ce traitement a été autorisé par la Commission Nationale de protection de données Personnelles (CNDP).</label>
-                   </div>
+                 <div class="mb-4 loi">
+                    <b-form-group class="usage-confirmed mb-0 ">
+                        <b-checkbox
+                            id="usage-confirmed"
+                            v-model="confirmed"
+                            name="usage-confirmed"
+                            type="is-warning"
+                            >
+                            Conformément à la loi 09-08 vous disposer d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles. Ce Traitement à été autorisé par la commision nationale de protection de dennées personelles(CNDP).
+                        </b-checkbox>
+                    </b-form-group>
+                 </div> 
                    <div class="mb-4">
-                     
-                     <b-button :disabled="!Validated || !setConfirmed" @click="nexStep"  pill variant="primary" class="jevalide">{{buttonText}}</b-button>
+                     <b-button :disabled="!Validated || !confirmed" @click="nexStep"  pill variant="primary" class="jevalide">{{buttonText}}</b-button>
                    </div>
-                </div> 
+               
               
               </div>
             </div>
@@ -101,6 +115,7 @@
 
 <script>
 //console.log(getParents);
+//console.log(parent.pays)
 import {mapMutations,mapGetters} from "vuex";
 import formHeader from "./formHeader"
 import parentInfo from './parentInfo.vue'
@@ -115,14 +130,23 @@ export default {
   ,
    data:function(){
     return{
+      options: [
+                {value: '', text: 'Votre pays'},
+                {value: 'A', text: 'maroc'},
+                {value: 'B', text: 'Algerie'},
+                {value: 'c', text: 'France'},
+                {value: 'D', text: 'Espagne'}
+
+            ],
         errors: {},
         confirmed:false,
         countries: countries,
+        option:"",
         parent:{
           civilite:null,
           nom:null,
           prenom:null,
-          pays:null,
+          pays:"",
           ville:null,
           telephone:null,
           email:null,
@@ -254,7 +278,7 @@ export default {
             }*/
            
         },
-        watch: {
+       watch: {
         /*'parent.paye': function(newVal, oldVal){
             let phoneCode = phones.find(x => x.code  == newVal);
             if(phoneCode){
@@ -262,10 +286,10 @@ export default {
             }
         },*/
 
-        setConfirmed : function(newVal){
+        confirmed : function(newVal,){
             this.setConfirmed(newVal);
         }
-    },
+        },
        computed:{
         /*parents(){
           return this.$store.state.parents
