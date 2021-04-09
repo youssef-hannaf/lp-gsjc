@@ -21,7 +21,7 @@
 
                     <enfantInfo v-for="(item, index) in getChildrens" :key="index" :enfant="item"/>
 
-              <div id="main_container">
+              <div id="main_container validation">
                 <div class="d-flex justify-content-center align-items-center">
                   <div class="p-2 genre"><label for="">Genre</label></div>
                   <div class="p-2"><input id="radio1" type="radio" value="fille" v-model="enfant.sexe"></div>
@@ -45,7 +45,14 @@
                   <div class="row">
                       <div class="col-sm-6">
                         <b-form-group>
-                          <b-input id="naissance" type="text" placeholder="Année de naissance*" v-model="enfant.naissance"></b-input>
+                          <b-select :expanded="true" v-model="enfant.naissance"  class="select-country aw-select" placeholder="Année de naisance">
+                            <option v-for="(year, index) in years" 
+                                          :value="year.code"
+                                          :key="index"
+                            >
+                                {{year.name}}
+                            </option>
+                          </b-select>
                         </b-form-group>
                       </div>
                       <div class="col-sm-6">
@@ -77,8 +84,8 @@
                   
                   <div class="mb-4">
                       <b-form-group>
-                          <b-button v-on:click="prevStep" type="is-primary">Précédent</b-button>
-                          <b-button type="is-light" :disabled="!Validated" v-on:click="nexStep">Envoyer</b-button>
+                          <b-button v-on:click="prevStep"  pill variant="primary" class="enfant-precedent">Précédent</b-button>
+                          <b-button type="is-light" pill variant="primary" class="suivant" :disabled="!Validated" v-on:click="nexStep">Envoyer</b-button>
                       </b-form-group>
                    </div>
                
@@ -112,11 +119,29 @@ export default {
                 sexe: null,
                 nom: null,
                 prenom: null,
-                naissance: null,
+                naissance: "",
                 classe: null,
                 etablissement: null,
                 poursuivre: null,
-            }
+            },
+            annee:"",
+            years:[
+              {name:"Année de naissance",code:""},
+              {name:"2005",code:"year1"},
+              {name:"2006",code:"year2"},
+              {name:"2007",code:"year3"},
+              {name:"2008",code:"year4"},
+              {name:"2009",code:"year5"},
+              {name:"2010",code:"year6"},
+              {name:"2011",code:"year7"},
+              {name:"2012",code:"year8"},
+              {name:"2013",code:"year9"},
+              {name:"2014",code:"year10"},
+              {name:"2015",code:"year11"},
+              {name:"2016",code:"year12"},
+              {name:"2017",code:"year13"},
+              {name:"2018",code:"year13"},
+            ]
       }  
     },
      mounted(){

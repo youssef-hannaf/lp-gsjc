@@ -86,14 +86,16 @@
                   </div>
                  <div class="mb-4 loi">
                     <b-form-group class="usage-confirmed mb-0 ">
+                      <div class="c-radio">
                         <b-checkbox
                             id="usage-confirmed"
                             v-model="confirmed"
                             name="usage-confirmed"
                             type="is-warning"
                             >
-                            Conformément à la loi 09-08 vous disposer d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles. Ce Traitement à été autorisé par la commision nationale de protection de dennées personelles(CNDP).
+                             Conformément à la loi 09-08 vous disposer d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles. Ce Traitement à été autorisé par la commision nationale de protection de dennées personelles(CNDP).
                         </b-checkbox>
+                      </div> 
                     </b-form-group>
                  </div> 
                    <div class="mb-4">
