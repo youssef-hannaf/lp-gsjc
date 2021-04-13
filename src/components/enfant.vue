@@ -47,7 +47,7 @@
                         <b-form-group>
                           <b-select :expanded="true" v-model="enfant.naissance"  class="select-country aw-select" placeholder="Année de naisance">
                             <option v-for="(year, index) in years" 
-                                          :value="year.code"
+                                          :value="year.name"
                                           :key="index"
                             >
                                 {{year.name}}
@@ -147,13 +147,14 @@ export default {
      mounted(){
         if(this.getChildrens.length > 0){
             this.enfant = { ...this.getChildrens.slice(-1).pop() };
-            //this.deleteLastChild();
+            this.deleteLastChild();
         }
     },
    methods: {
         ...mapMutations(["nextStep","prevStep","resetChildren","addChild","deleteChild","deleteLastChild"]),
         addNewEnfant(){
             this.addChild({...this.enfant});
+             console.log({...this.enfant})
             this.reset();
         }, 
         reset(){
@@ -170,6 +171,7 @@ export default {
             const errors = this.validate();
             if(Object.keys(errors).length == 0){
                 this.addChild({...this.enfant});
+                console.log({...this.enfant})
                 this.nextStep();
             }
 

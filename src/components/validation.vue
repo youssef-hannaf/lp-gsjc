@@ -47,7 +47,7 @@
                   
                   <div class="mb-4">
                      <b-button @click="prevStep" pill variant="primary" class="precedent">précédent</b-button>
-                      <b-button  pill variant="primary" class="suivant" :disabled="!Validated" v-on:click="nextStep" v-b-modal.modal-1>Envoyer</b-button>
+                      <b-button  pill variant="primary" class="suivant" :disabled="!Validated" v-on:click="nextStep" >Envoyer</b-button>
                    </div>
               
               </div>
@@ -57,9 +57,7 @@
           </div>
         </div>
 
-        <!-- <b-modal id="modal-1" title="BootstrapVue">
-          <p class="my-4">Hello from modal!</p>
-        </b-modal>-->
+        
 
         <b-modal
             v-model="isComponentModalActive"

@@ -3,7 +3,7 @@
     <section class="modal-card-body">
         <span class="check-icon"><font-awesome-icon icon="check"/></span>
         <h4>Votre demande a bien été envoyée</h4>
-        <p>L'équipe GSJC vous contacterez dans les plus brefs délais</p>
+        <p>L'équipe GSJC vous contacterez dans les plus brefs delais</p>
         <b-button type="is-primary" v-on:click="$emit('close')">Terminer</b-button>
     </section>
 </div>

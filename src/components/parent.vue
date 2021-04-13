@@ -13,6 +13,7 @@
           </div>
           <div class="col-sm-8">
             <div id="main_right">
+               <!--<sliderComponent/>-->
               <div id="main_right_header">
                  <formHeader
                     title="Coordonnées des parents"
@@ -120,13 +121,15 @@
 //console.log(parent.pays)
 import {mapMutations,mapGetters} from "vuex";
 import formHeader from "./formHeader"
+//import sliderComponent from '@/components/sliderComponent.vue'
 import parentInfo from './parentInfo.vue'
 import {countries} from "../static/countries"
 export default {
   name: 'parent',
       components: {
         parentInfo,
-        formHeader
+        formHeader,
+       // sliderComponent
     
   }
   ,
