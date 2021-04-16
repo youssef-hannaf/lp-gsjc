@@ -45,9 +45,9 @@
                   <div class="row">
                       <div class="col-sm-6">
                         <b-form-group>
-                          <b-select :expanded="true" v-model="enfant.naissance"  class="select-country aw-select" placeholder="Année de naisance">
+                          <b-select :expanded="true" v-model="enfant.naissance"  class="select-country aw-select" placeholder="Année de naissance">
                             <option v-for="(year, index) in years" 
-                                          :value="year.name"
+                                          :value="year.code"
                                           :key="index"
                             >
                                 {{year.name}}
@@ -105,6 +105,7 @@
 import {mapMutations,mapGetters} from "vuex";
 import formHeader from "./formHeader.vue"
 import enfantInfo from "./enfantInfo.vue"
+import {years} from "../static/years"
 export default {
   name: 'enfant',
   components:{
@@ -125,7 +126,8 @@ export default {
                 poursuivre: null,
             },
             annee:"",
-            years:[
+            years:years,
+           /* years:[
               {name:"Année de naissance",code:""},
               {name:"2005",code:"year1"},
               {name:"2006",code:"year2"},
@@ -141,7 +143,7 @@ export default {
               {name:"2016",code:"year12"},
               {name:"2017",code:"year13"},
               {name:"2018",code:"year13"},
-            ]
+            ]*/
       }  
     },
      mounted(){
@@ -161,7 +163,7 @@ export default {
             this.enfant.sexe = '';
             this.enfant.nom = '';
             this.enfant.prenom = '';
-            this.enfant.naissance = null;
+            this.enfant.naissance = '';
             this.enfant.classe = '';
             this.enfant.etablissement = '';
             this.enfant.poursuivre = '';

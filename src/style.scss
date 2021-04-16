@@ -114,7 +114,7 @@ input[type="text"]{
     font-size: 14px;
     padding: .375rem 1rem;
     border-radius: 30px;
-    width: 84%;
+    width: 100%;
     margin: 0 auto;
     outline: none;
     
@@ -238,6 +238,11 @@ select{
         position: relative;
         padding: 12px;
         margin-bottom: 15px;
+    .col-md-5,.col-md-7{
+        font-weight: 500;
+        color: #212529;
+        margin-bottom: 10px;
+    }
 
     button, button:hover{
         background: transparent;
@@ -254,6 +259,7 @@ select{
         flex-wrap: wrap;
         margin-right: -15px;
         margin-left: -15px;  
+        
     }
 }
 .enfant_info{
@@ -263,6 +269,13 @@ select{
     position: relative;
     padding: 12px;
     margin-bottom: 15px;
+    .col-md-5,.col-md-7{
+        font-weight: 500;
+        color: #212529;
+        margin-bottom: 10px;
+    }
+
+    
 
 button, button:hover{
     background: transparent;
@@ -279,6 +292,7 @@ button, button:hover{
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;  
+    
 }
 }
 
@@ -289,9 +303,8 @@ button, button:hover{
     font-size: 14px;
     padding: .375rem 1rem;
     border-radius: 30px;
-    width: 84%;
-    margin-bottom: 20px;
     outline: none;
+    width: 100%;
 }
 .button-delete{
     padding: 0!important;
@@ -300,7 +313,7 @@ button, button:hover{
     z-index: 2;
 
     position: absolute;
-    top: 10px;
+    top: -1px;
     right: 10px;
     width: 12px;
     height: 12px;
@@ -322,6 +335,9 @@ button, button:hover{
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .p-2{
+        padding:0% !important
     }
 }
 .select-country  {
@@ -441,14 +457,15 @@ button, button:hover{
 //================================
 //== Confirmation modal
 //================================
-#__BVID__45___BV_modal_content_{
-    #__BVID__45___BV_modal_header_{
-        display: none;
+
+    .modal-header{
+        display: none!important;
     }
     .modal-footer{
-        display: none;
+        display: none!important;
     }
-    button{
+    .modal-body{
+        button{
         background-color: #023e7f;
         border-radius: 50px;
         padding: 4px 40px;
@@ -463,13 +480,18 @@ button, button:hover{
         line-height: 17px;
         margin-bottom: 20px;
     }
-}
-.confirmation-modal .modal-card-body{
-    width: 350px;
-    height: 250px;
-    text-align: center;
-    border-radius: 10px;
-    margin: auto;
+    }
+.confirmation-modal {
+   
+    .modal-card-body{
+        width: 350px;
+        height: 250px;
+        text-align: center;
+        border-radius: 10px;
+        margin: auto;
+        overflow: hidden;
+        padding: 10px;
+    }
 
     .check-icon{
         font-size: 30px;
@@ -479,7 +501,7 @@ button, button:hover{
         line-height: 52px;
         color: $mainColor;
         border: 2px solid $mainColor;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         border-radius: 55px;
     }
     h4{
@@ -514,4 +536,80 @@ button, button:hover{
     }
 }
 
+.droit{
+    line-height: 16px;
+    font-size: 12px;
+    color: #757575;
+    text-align: justify;
+}
+.admission{
+    .p1{
+        margin: 0 auto;
+    }
+}
 
+
+//================================
+//== Phone Number Wrapper
+//================================
+.phone-wrapper{
+    position: relative;
+    .phones-code{
+        position: absolute;
+        z-index: 2;
+        width: 77px;
+        border-radius: 30px 0 0 30px;
+        
+        .input{
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+            border-top-right-radius: 0;
+            border-bottom-right-radius:0;
+            border: none!important;
+        }
+        
+        &::before{
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 1px;
+            background: #023e7f2e;
+            top: 10px;
+            right: 4px;
+        }
+        .select{
+            select{
+                border: 0;
+                background-color: transparent;
+                height: calc(1.5em + 0.75rem + 8px);
+                font-weight: 500;
+                font-size: 15px;
+                padding-right: 2em;
+                &:focus{
+                    box-shadow: none;
+                    border: 0;
+                }
+            }
+            &::after{
+                margin-top: -0.3375em; 
+                border-color: $mainColor;
+            }
+            &:hover{
+                &::after{
+                    border-color: $mainColor;
+                }
+
+            }
+        }
+    }
+    .phone-number{
+        position: relative;
+        z-index: 1;
+        text-align: right;
+        .input{
+            padding-left: 80px;
+            
+        }
+    }
+}

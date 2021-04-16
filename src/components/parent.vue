@@ -23,7 +23,7 @@
               <div id="main_container">
                 <div class="d-flex justify-content-center align-items-center">
                   <b-form-group class="civilite-group">
-                    <div class="p-2 civilite"><label>Civilité</label></div>
+                    <div class="p-2 civilite"><label>Civilité :</label></div>
                     <div class="p-2"><b-form-radio class="ml-5" id="radio1" type="is-info" value="m" v-model="parent.civilite"></b-form-radio></div>
                      <div class="p-2"><label for="radio1">M.</label></div>
                     <div class="p-2"><b-form-radio class="ml-5" type="is-info" id="radio2" value="mme" v-model="parent.civilite"></b-form-radio></div>
@@ -65,8 +65,9 @@
                   </div>
                   <div class="row">
                       <div class="col-sm-6">
-                        <b-form-group>
-                            <b-input id="telephone" type="text" placeholder="+212      Téléphone*" v-model="parent.telephone"></b-input>
+                        <b-form-group class="phone-wrapper">
+                            <b-input class="phones-code" readonly v-model="parent.phoneCode" placeholder="+212" type="text" />
+                            <b-input id="telephone" class="phone-number" type="text" placeholder="Votre Tel. *" v-model="parent.telephone"></b-input>
                         </b-form-group>
                       </div>
                       <div class="col-sm-6">
@@ -94,7 +95,7 @@
                             name="usage-confirmed"
                             type="is-warning"
                             >
-                             Conformément à la loi 09-08 vous disposer d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles. Ce Traitement à été autorisé par la commision nationale de protection de dennées personelles(CNDP).
+                             <p class="droit">Conformément à la loi 09-08 vous disposer d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles. Ce Traitement à été autorisé par la commision nationale de protection de dennées personelles(CNDP).</p>
                         </b-checkbox>
                       </div> 
                     </b-form-group>
@@ -124,6 +125,7 @@ import formHeader from "./formHeader"
 //import sliderComponent from '@/components/sliderComponent.vue'
 import parentInfo from './parentInfo.vue'
 import {countries} from "../static/countries"
+import { phones } from '../static/phones';
 export default {
   name: 'parent',
       components: {
@@ -135,18 +137,18 @@ export default {
   ,
    data:function(){
     return{
-      options: [
+      /*options: [
                 {value: '', text: 'Votre pays'},
                 {value: 'A', text: 'maroc'},
                 {value: 'B', text: 'Algerie'},
                 {value: 'c', text: 'France'},
                 {value: 'D', text: 'Espagne'}
 
-            ],
+            ],*/
         errors: {},
         confirmed:false,
         countries: countries,
-        option:"",
+        //option:"",
         parent:{
           civilite:null,
           nom:null,
@@ -154,6 +156,7 @@ export default {
           pays:"",
           ville:null,
           telephone:null,
+          phoneCode:null,
           email:null,
           profession:null,},
         
@@ -186,6 +189,7 @@ export default {
                 this.parent.ville = '';
                 this.parent.profession = '';
                 this.parent.telephone = '';
+                this.parent.phoneCode = '';
                 this.parent.email = '';
                 this.parent.civilite = '';
             },
@@ -284,12 +288,12 @@ export default {
            
         },
        watch: {
-        /*'parent.paye': function(newVal, oldVal){
+        'parent.paye': function(newVal,){
             let phoneCode = phones.find(x => x.code  == newVal);
             if(phoneCode){
                 this.parent.phoneCode = phoneCode.dial_code;
             }
-        },*/
+        },
 
         confirmed : function(newVal,){
             this.setConfirmed(newVal);

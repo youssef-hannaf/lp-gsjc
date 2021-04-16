@@ -3,10 +3,10 @@
         <div class="enfant_info">
             <div class="row">
                      <b-button class="button-delete" v-on:click="deleteEnfant(enfant)" type="is-primary"><font-awesome-icon :icon="['fas', 'times']"/></b-button>
-                    <div class="col-md-5"><div class="enfant_name">{{enfant.nom + ' ' + enfant.prenom}}</div></div>      
-                    <div class="col-md-7"><div class="enfant_naiss">Née le:{{enfant.naissance}}</div></div>
-                    <div class="col-md-5"><div class="parent_classe">Classe:{{enfant.classe}}</div></div>
-                    <div class="col-md-7"><div class="parent_ecole">école:{{enfant.ecole}}</div></div>
+                    <div class="col-md-5"><div class="enfant_name"><p class="c-blue mb-0 font-500">{{enfant.nom + ' ' + enfant.prenom}}</p></div></div>      
+                    <div class="col-md-7"><div class="enfant_naiss"><p class="c-blue mb-0 font-500">Née le: {{enfant.naissance}}</p></div></div>
+                    <div class="col-md-5"><div class="parent_classe"><p class="c-blue mb-0 font-500">Classe: {{enfant.classe}}</p></div></div>
+                    <div class="col-md-7"><div class="parent_ecole"><p class="c-blue mb-0 font-500">école: {{enfant.etablissement}}</p></div></div>
             </div>             
         </div>
     </div>
