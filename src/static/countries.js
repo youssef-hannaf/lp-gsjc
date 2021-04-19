@@ -10,15 +10,15 @@ export const countries=[
     },
     {
         name:"Algerie",
-        code:"ALG"
+        code:"DZ"
     },
     {
         name:"France",
         code:"FR"
     },
     {
-        name:"Espagne",
-        code:"ESP"
+        name:"Finland",
+        code:"FI"
     },
 
 ]

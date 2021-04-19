@@ -13,7 +13,9 @@
           </div>
           <div class="col-sm-8">
             <div id="main_right">
-               <!--<sliderComponent/>-->
+
+               <sliderComponent/>
+               
               <div id="main_right_header">
                  <formHeader
                     title="Coordonnées des parents"
@@ -122,7 +124,7 @@
 //console.log(parent.pays)
 import {mapMutations,mapGetters} from "vuex";
 import formHeader from "./formHeader"
-//import sliderComponent from '@/components/sliderComponent.vue'
+import sliderComponent from '@/components/sliderComponent.vue'
 import parentInfo from './parentInfo.vue'
 import {countries} from "../static/countries"
 import { phones } from '../static/phones';
@@ -131,7 +133,7 @@ export default {
       components: {
         parentInfo,
         formHeader,
-       // sliderComponent
+        sliderComponent
     
   }
   ,
@@ -288,7 +290,7 @@ export default {
            
         },
        watch: {
-        'parent.paye': function(newVal,){
+        'parent.pays': function(newVal,){
             let phoneCode = phones.find(x => x.code  == newVal);
             if(phoneCode){
                 this.parent.phoneCode = phoneCode.dial_code;

@@ -13,6 +13,7 @@
           </div>
           <div class="col-sm-8">
             <div id="main_right">
+              <sliderComponent/>
               <div id="main_right_header">
                   <formHeader
                     title="Informations de l'enfant"
@@ -45,14 +46,23 @@
                   <div class="row">
                       <div class="col-sm-6">
                         <b-form-group>
-                          <b-select :expanded="true" v-model="enfant.naissance"  class="select-country aw-select" placeholder="Année de naissance">
+                          <!--<b-select :expanded="true" v-model="enfant.naissance"  class="select-country aw-select" placeholder="Année de naissance">
                             <option v-for="(year, index) in years" 
-                                          :value="year.code"
+                                          :value="year.name"
                                           :key="index"
                             >
                                 {{year.name}}
                             </option>
-                          </b-select>
+                          </b-select>-->
+                          <b-datepicker
+                            class="datepicker"
+                            v-model="enfant.naissance"
+                            :show-week-number="showWeekNumber"
+                            :locale="locale"
+                            placeholder="Date Naissance..."
+                            icon-right="calendar-today"
+                            trap-focus>
+                        </b-datepicker>
                         </b-form-group>
                       </div>
                       <div class="col-sm-6">
@@ -105,12 +115,14 @@
 import {mapMutations,mapGetters} from "vuex";
 import formHeader from "./formHeader.vue"
 import enfantInfo from "./enfantInfo.vue"
+import sliderComponent from '@/components/sliderComponent.vue'
 import {years} from "../static/years"
 export default {
   name: 'enfant',
   components:{
     formHeader,
-    enfantInfo
+    enfantInfo,
+    sliderComponent
   },
   data(){
       return {

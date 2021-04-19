@@ -21,10 +21,13 @@ export default {
     // window.addEventListener('resize', this.windowResizeHandler);
   },
   computed: {
-    ...mapGetters[("getCurrentStep","getTotalStep")],
-    getCurrentStep(){
-             return this.$store.getters.getCurrentStep
+     ...mapGetters(["getCurrentStep"]),
+           getCurrentStep (){
+             return this.$store.getters.getParents
            }
+    /*getCurrentStep(){
+             return this.$store.getters.getCurrentStep
+           }*/
   },
   methods: {
     getActiveClass(step){
