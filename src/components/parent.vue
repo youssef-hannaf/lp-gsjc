@@ -14,7 +14,25 @@
           <div class="col-sm-8">
             <div id="main_right">
 
-               <sliderComponent/>
+              <div class="slider">
+                <ul class="steps">
+                    <li class="step">
+                        <span class="step__icon"></span>
+                        <span class="step-num">1</span>
+                    </li>
+                    <li class="step">
+                        <span class="step__icon"></span>
+                        <span class="step-num">2</span>
+                    </li>
+                    <li class="step">
+                        <span class="step__icon"></span>
+                        <span class="step-num">3</span>
+                    </li>
+                </ul>
+              </div>
+
+
+               <!--<sliderComponent/>-->
                
               <div id="main_right_header">
                  <formHeader
@@ -124,7 +142,7 @@
 //console.log(parent.pays)
 import {mapMutations,mapGetters} from "vuex";
 import formHeader from "./formHeader"
-import sliderComponent from '@/components/sliderComponent.vue'
+//import sliderComponent from '@/components/sliderComponent.vue'
 import parentInfo from './parentInfo.vue'
 import {countries} from "../static/countries"
 import { phones } from '../static/phones';
@@ -133,7 +151,7 @@ export default {
       components: {
         parentInfo,
         formHeader,
-        sliderComponent
+        //sliderComponent
     
   }
   ,
