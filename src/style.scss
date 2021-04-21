@@ -49,6 +49,65 @@ img{
     width: 100%;
 }
 
+/*************@media************************/
+@media (max-width: 768px){
+    .steps {
+        top: 1rem;
+        flex-direction: row;
+        bottom: inherit;
+        height: 30px;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+    .steps:before {
+        left: 0;
+    }
+    .steps:after, .steps:before {
+        content: "";
+        position: absolute;
+        width: 16%;
+        transform: translateY(-50%);
+        background-color: #fff;
+        z-index: 1;
+        height: 10px;
+        top: 50%!important;
+        bottom: inherit;
+    }
+    .step--active:before, .step--complete:before, .step--inactive:before, .step--incomplete:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: inherit;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 4px;
+    }
+    .step .step-num {
+        right: inherit;
+        top: 0;
+        transform: translate(0);
+        font-size: 17px;
+        padding-top: 1.2rem;
+    }
+    .steps:after {
+        left: 84%;
+    }
+    .steps:after, .steps:before {
+        content: "";
+        position: absolute;
+        width: 16%;
+        transform: translateY(-50%);
+        background-color: #fff;
+        z-index: 1;
+        height: 10px;
+        top: 50%!important;
+        bottom: inherit;
+    }
+    
+}
+
   /*  main ***/
 #main {
     background-color: $color-base;
@@ -77,8 +136,9 @@ img{
 #main_right{
     background-color: $color3;
     padding: 25px 10px;
-    min-height: 100vh;
+    min-height: 50vh;
     text-align: center;
+    
     h2{
         color: $color1;
         font-size: 25px;
@@ -174,6 +234,7 @@ select{
 
 .validation{
    text-align: center;
+   margin-left: 56px;
     select{
         box-shadow: 0 15px 25px rgb(0 0 0 / 10%);
         border-color: #febc44;
@@ -632,8 +693,11 @@ button, button:hover{
     position: absolute;
     left: 15px;
     top: 5%;
-    bottom: 31%;
+    bottom: 10%;
 }
+
+
+
 .step {
     display: flex;
     align-items: center;
@@ -697,7 +761,7 @@ button, button:hover{
 .step--active:before, .step--complete:before, .step--inactive:before, .step--incomplete:before {
     content: "";
     position: absolute;
-    background-color: #febc44;
+    //background-color: #febc44;
     left: 50%;
     width: 4px;
     bottom: 0;

@@ -13,6 +13,7 @@
           </div>
           <div class="col-sm-8">
               <div id="main_right">
+                <sliderComponent/>
                    <div id="main_container" class="validation">
                      <formHeader
                     title="Type d'action"
@@ -77,12 +78,14 @@
 <script>
 import {mapMutations} from "vuex"
 import formHeader from "./formHeader"
+import sliderComponent from '@/components/sliderComponent.vue'
 import confirm from "./confirm.vue"
 export default {
   name: 'validation',
   components:{
     formHeader,
-    confirm
+    confirm,
+    sliderComponent
   },
    data(){
         return{

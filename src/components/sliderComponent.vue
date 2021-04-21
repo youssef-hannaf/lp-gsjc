@@ -16,7 +16,7 @@
                         <span class="step__icon"></span>
                         <span class="step-num">2</span>
                     </li>
-                    <li :class="'step '  + getActiveClass(1) ">
+                    <li :class="'step '  + getActiveClass(3) ">
                         <span class="step__icon"></span>
                         <span class="step-num">3</span>
                     </li>
@@ -39,7 +39,7 @@ export default {
   computed: {
      ...mapGetters(["getCurrentStep"]),
            getCurrentStep (){
-             return this.$store.getters.getParents
+             return this.$store.getters.getCurrentStep
            }
         /*getCurrentStep(){
              return this.$store.getters.getCurrentStep
