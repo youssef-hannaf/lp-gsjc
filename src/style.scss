@@ -619,3 +619,103 @@ button, button:hover{
         }
     }
 }
+
+
+/*************** steps *************/
+.steps {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-direction: column;
+    width: 30px;
+    position: absolute;
+    left: 15px;
+    top: 5%;
+    bottom: 31%;
+}
+.step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1 1;
+    position: relative;
+    pointer-events: none;
+    margin-bottom: 0;
+
+    &:before{
+        content: "";
+        position: absolute;
+        background-color: #febc44;
+        left: 50%;
+        width: 4px;
+        bottom: 0;
+        top: 0;
+        transform: translate(-50%);
+    }
+     .step__icon {
+        -webkit-animation: bounce .5s ease-in-out;
+        animation: bounce .5s ease-in-out;
+        background-color: #fff;
+        color: #fff;
+        display: block;
+        position: relative;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        z-index: 2;
+        box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+       /* &:before{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #023e7f;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+        }*/
+    }
+    .step-num {
+        right: 0;
+        position: absolute;
+        right: -1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #febc44;
+        font-weight: 900;
+        font-size: 20px;
+        display: inline-block;
+    }
+}
+.step--active:before, .step--complete:before {
+    background-color: #3284c5;
+}
+.step--active:before, .step--complete:before, .step--inactive:before, .step--incomplete:before {
+    content: "";
+    position: absolute;
+    background-color: #febc44;
+    left: 50%;
+    width: 4px;
+    bottom: 0;
+    top: 0;
+    transform: translate(-50%);
+}
+.step--active .step__icon:before, .step--complete .step__icon:before, .step--inactive .step__icon:before, .step--incomplete .step__icon:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #023e7f;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+}
+.step--active .step-num, .step--complete .step-num {
+    color: #3284c5;
+}
