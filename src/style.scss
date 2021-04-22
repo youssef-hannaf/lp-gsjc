@@ -49,64 +49,6 @@ img{
     width: 100%;
 }
 
-/*************@media************************/
-@media (max-width: 768px){
-    .steps {
-        top: 1rem;
-        flex-direction: row;
-        bottom: inherit;
-        height: 30px;
-        left: 0;
-        right: 0;
-        width: 100%;
-    }
-    .steps:before {
-        left: 0;
-    }
-    .steps:after, .steps:before {
-        content: "";
-        position: absolute;
-        width: 16%;
-        transform: translateY(-50%);
-        background-color: #fff;
-        z-index: 1;
-        height: 10px;
-        top: 50%!important;
-        bottom: inherit;
-    }
-    .step--active:before, .step--complete:before, .step--inactive:before, .step--incomplete:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 100%;
-        bottom: inherit;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 4px;
-    }
-    .step .step-num {
-        right: inherit;
-        top: 0;
-        transform: translate(0);
-        font-size: 17px;
-        padding-top: 1.2rem;
-    }
-    .steps:after {
-        left: 84%;
-    }
-    .steps:after, .steps:before {
-        content: "";
-        position: absolute;
-        width: 16%;
-        transform: translateY(-50%);
-        background-color: #fff;
-        z-index: 1;
-        height: 10px;
-        top: 50%!important;
-        bottom: inherit;
-    }
-    
-}
 
   /*  main ***/
 #main {
@@ -165,9 +107,7 @@ img{
     font-weight: $font-weight-medium;
 
 }
-input[type="radio"]{
-    
-}
+
 input[type="text"]{
     box-shadow: 0 15px 25px rgb(0 0 0 / 10%);
     border-color: #febc44;
@@ -212,7 +152,7 @@ select{
     justify-content: center;
     align-items: center;
     label{
-        ine-height: 16px;
+        line-height: 16px;
          font-size: 12px;
          color: #757575;
          position: relative;
@@ -782,4 +722,85 @@ button, button:hover{
 }
 .step--active .step-num, .step--complete .step-num {
     color: #3284c5;
+}
+
+/*************@media************************/
+@media (max-width: 768px){
+    .steps {
+        top: 0.6rem;
+        flex-direction: row;
+        bottom: inherit;
+        height: 30px;
+        left: 31px;
+        right: 0;
+        width: 84%;
+        margin-bottom: 10px;
+    }
+    .steps:before {
+        left: 0;
+    }
+    .steps:after, .steps:before {
+        content: "";
+        position: absolute;
+        width: 16%;
+        transform: translateY(-50%);
+        background-color: #fff;
+        z-index: 1;
+        height: 10px;
+        top: 50%!important;
+        bottom: inherit;
+    }
+    .step--active:before, .step--complete:before, .step--inactive:before, .step--incomplete:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: inherit;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 4px;
+    }
+    .step .step-num {
+        right: inherit;
+        top: 0;
+        transform: translate(0);
+        font-size: 17px;
+        padding-top: 1.2rem;
+    }
+    .steps:after {
+        left: 84%;
+    }
+    .steps:after, .steps:before {
+        content: "";
+        position: absolute;
+        width: 16%;
+        transform: translateY(-50%);
+        background-color: #fff;
+        z-index: 1;
+        height: 10px;
+        top: 50%!important;
+        bottom: inherit;
+    }
+    #main_right_header {
+        margin-top: 45px;
+        p{
+            margin: 0;
+        }
+    }
+    
+    input[type=text] {
+        &::placeholder{
+            font-size: 10px;
+        }
+    }
+    .datepicker {
+        border:none;
+        &::placeholder{
+            font-size: 5px;
+        }
+    }
+    .b-form-btn-label-control.form-control > .form-control {
+        font-size: 10px!important;
+     }  
+   
 }

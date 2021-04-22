@@ -79,7 +79,7 @@
                         </b-form-group>
                       </div>
                   </div>
-                  <p class="procedure">Avez-vous entamé la procédure de pré-inscription sur le site du SCAC ?</p><br>
+                  <p class="procedure">Avez-vous entamé la procédure de pré-inscription sur le site du SCAC ?</p>
                     <div class="d-flex justify-content-center align-items-center">
                      
                       <div class="p-2"><input id="radio1" type="radio" value="oui" v-model="enfant.poursuivre"></div>
